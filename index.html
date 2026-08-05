@@ -1,1 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Pulse Music - a Vanilla JavaScript music discovery application">
+  <title>Pulse Music</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <a class="logo" href="#" data-view="home"><span>P</span> Pulse</a>
+      <nav aria-label="Main navigation">
+        <button class="nav-btn active" data-view="home">⌂ <span>Home</span></button>
+        <button class="nav-btn" data-view="search">⌕ <span>Search</span></button>
+        <button class="nav-btn" data-view="library">♡ <span>Library</span></button>
+        <button class="nav-btn" data-view="profile">◎ <span>Profile</span></button>
+      </nav>
+      <div class="side-card">
+        <small>YOUR MIX</small>
+        <h3>Night Drive</h3>
+        <p>Music selected for you.</p>
+        <button class="secondary-btn" id="play-mix">Play mix</button>
+      </div>
+    </aside>
+
+    <main>
+      <header class="topbar">
+        <div>
+          <small>WELCOME BACK</small>
+          <h1>Good evening, Beatriz 👋</h1>
+        </div>
+        <button class="avatar" data-view="profile">MT</button>
+      </header>
+
+      <section class="view active" id="home-view">
+        <article class="hero">
+          <div>
+            <span class="tag">Featured playlist</span>
+            <h2>Feel every beat.</h2>
+            <p>Discover fresh tracks selected for your mood.</p>
+            <button class="primary-btn" id="hero-play">▶ Play now</button>
+          </div>
+          <div class="record" aria-hidden="true"></div>
+        </article>
+
+        <section class="section">
+          <div class="section-title">
+            <h2>Recently played</h2>
+            <button class="text-btn" data-view="library">See all</button>
+          </div>
+          <div class="song-grid" id="recent-list"></div>
+        </section>
+
+        <section class="section">
+          <div class="section-title"><h2>Browse by mood</h2></div>
+          <div class="mood-grid">
+            <button class="mood purple" data-genre="Electronic">Night energy</button>
+            <button class="mood orange" data-genre="Afrobeats">Afro vibes</button>
+            <button class="mood pink" data-genre="R&B">Slow moments</button>
+            <button class="mood blue" data-genre="Hip-Hop">Workout mode</button>
+          </div>
+        </section>
+      </section>
+
+      <section class="view" id="search-view">
+        <div class="page-heading">
+          <small>DISCOVER</small>
+          <h2>Search</h2>
+        </div>
+        <form id="search-form" class="search-form">
+          <input id="search-input" type="search" placeholder="Search songs, artists, albums or genres" aria-label="Search music">
+          <button class="primary-btn" type="submit">Search</button>
+        </form>
+        <div class="filter-row" id="genre-filters"></div>
+        <div class="track-list" id="search-results"></div>
+      </section>
+
+      <section class="view" id="library-view">
+        <div class="page-heading split">
+          <div><small>YOUR MUSIC</small><h2>Library</h2></div>
+          <button class="primary-btn" id="open-playlist-modal">＋ New playlist</button>
+        </div>
+        <div class="library-controls">
+          <button class="filter-btn active" data-library-filter="all">All</button>
+          <button class="filter-btn" data-library-filter="liked">Liked songs</button>
+          <button class="filter-btn" data-library-filter="playlists">Playlists</button>
+        </div>
+        <div id="playlist-container" class="playlist-container"></div>
+        <div class="track-list" id="library-results"></div>
+      </section>
+
+      <section class="view" id="profile-view">
+        <div class="profile-header">
+          <div class="profile-avatar">MT</div>
+          <div>
+            <small>PREMIUM MEMBER</small>
+            <h2>Mamadou Touré</h2>
+            <p>Music lover · Ottawa, Canada</p>
+          </div>
+        </div>
+        <div class="stats">
+          <article><strong id="played-count">0</strong><span>Songs played</span></article>
+          <article><strong id="liked-count">0</strong><span>Liked songs</span></article>
+          <article><strong id="playlist-count">0</strong><span>Playlists</span></article>
+        </div>
+        <form class="settings-card" id="settings-form">
+          <h3>Preferences</h3>
+          <label><span>Notifications</span><input type="checkbox" id="notifications"></label>
+          <label><span>High-quality audio</span><input type="checkbox" id="quality"></label>
+          <button class="primary-btn" type="submit">Save preferences</button>
+        </form>
+      </section>
+    </main>
+
+    <aside class="player-panel">
+      <small>NOW PLAYING</small>
+      <div class="cover purple" id="large-cover">ME</div>
+      <h2 id="player-title">Choose a song</h2>
+      <p id="player-artist">Pulse Music</p>
+      <input id="progress" type="range" min="0" max="100" value="0" aria-label="Song progress">
+      <div class="time"><span id="current-time">0:00</span><span id="duration">0:00</span></div>
+      <div class="controls">
+        <button id="previous" aria-label="Previous">⏮</button>
+        <button id="play-toggle" class="play-btn" aria-label="Play">▶</button>
+        <button id="next" aria-label="Next">⏭</button>
+      </div>
+      <label class="volume">🔊 <input id="volume" type="range" min="0" max="1" step="0.05" value="0.7"></label>
+    </aside>
+  </div>
+
+  <div class="mobile-player">
+    <div class="mini-cover purple" id="mini-cover">P</div>
+    <div><strong id="mini-title">Choose a song</strong><span id="mini-artist">Pulse Music</span></div>
+    <button id="mobile-play">▶</button>
+  </div>
+
+  <nav class="mobile-nav">
+    <button class="nav-btn active" data-view="home">⌂<span>Home</span></button>
+    <button class="nav-btn" data-view="search">⌕<span>Search</span></button>
+    <button class="nav-btn" data-view="library">♡<span>Library</span></button>
+    <button class="nav-btn" data-view="profile">◎<span>Profile</span></button>
+  </nav>
+
+  <dialog id="playlist-modal">
+    <form id="playlist-form" method="dialog">
+      <div class="modal-heading">
+        <h2>Create a playlist</h2>
+        <button type="button" id="close-modal" aria-label="Close">×</button>
+      </div>
+      <label>Playlist name<input id="playlist-name" required maxlength="30"></label>
+      <label>Description<textarea id="playlist-description" maxlength="100"></textarea></label>
+      <button class="primary-btn" type="submit">Create playlist</button>
+    </form>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <audio id="audio"></audio>
+  <script src="js/script.js"></script>
+</body>
+</html>
 
