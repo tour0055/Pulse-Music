@@ -75,7 +75,7 @@ var currentLibraryFilter = "all";
 
 async function loadSongs() {
   try {
-    var response = await fetch("data/songs.json");
+    var response = await fetch("song.json");
 
     if (!response.ok) {
       throw new Error("The song data could not be loaded.");
