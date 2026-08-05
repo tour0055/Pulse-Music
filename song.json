@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "title": "Midnight Echo",
+    "artist": "Nova Ray",
+    "album": "After Hours",
+    "genre": "Electronic",
+    "duration": "3:42",
+    "color": "purple",
+    "audio": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+  },
+  {
+    "id": 2,
+    "title": "Golden Streets",
+    "artist": "Kairo",
+    "album": "City Lights",
+    "genre": "Afrobeats",
+    "duration": "3:18",
+    "color": "orange",
+    "audio": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"
+  },
+  {
+    "id": 3,
+    "title": "Slow Motion",
+    "artist": "Mila Stone",
+    "album": "Velvet",
+    "genre": "R&B",
+    "duration": "4:05",
+    "color": "pink",
+    "audio": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"
+  },
+  {
+    "id": 4,
+    "title": "No Limits",
+    "artist": "Apex",
+    "album": "Momentum",
+    "genre": "Hip-Hop",
+    "duration": "2:56",
+    "color": "blue",
+    "audio": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3"
+  },
+  {
+    "id": 5,
+    "title": "Coastline",
+    "artist": "Luna Wave",
+    "album": "Summer Memory",
+    "genre": "Pop",
+    "duration": "3:27",
+    "color": "teal",
+    "audio": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3"
+  },
+  {
+    "id": 6,
+    "title": "Quiet Places",
+    "artist": "North Room",
+    "album": "Still",
+    "genre": "Chill",
+    "duration": "3:51",
+    "color": "green",
+    "audio": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3"
+  }
+]
