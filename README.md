@@ -52,14 +52,10 @@ No JavaScript frameworks or libraries were used.
 
 ```
 pulse-music-final/
-│
-├── index.html
-├── css/
-│   └── style.css
-├── js/
-│   └── script.js
-├── data/
-│   └── songs.json
+── index.html
+── style.css
+-- script.js
+-─ songs.json
 ├── docs/
 │   ├── requirements.md
 │   ├── client-communication.md
